@@ -24,9 +24,6 @@ module.exports = defineConfig({
       }
     }
   },
-  outputDir: 'docs',
-  publicPath: process.env.NODE_ENV === 'production'
-  ? '/rico.github.io/'  // GitHub 페이지의 리포지토리 이름에 맞게 수정
-  : '/',
-
+  outputDir: './docs', 
+  publicPath: "" 
 })
