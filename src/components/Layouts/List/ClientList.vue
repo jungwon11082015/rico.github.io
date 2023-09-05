@@ -1,173 +1,15 @@
 <template>
     <ul class="clent__list">
-        <li class="client_items">
+        <li class="client_items" v-for="(item, index ) in processedList" :key="index">
             <figure>
-                <img src="@/assets/images/f&f.jpg" class="figure_item" alt="에프엔에프">
+                <img :src="item.imageSrc" class="figure_item" :alt="item.alt" />
             </figure>
         </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/casamia.jpg" class="figure_item" alt="신세계까사">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/bing.jpg" class="figure_item" alt="빙그레">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/coca.jpg" class="figure_item" alt="코라콜라">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/magnum.jpg" class="figure_item" alt="매그넘">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/p&g.jpg" class="figure_item" alt="p&g">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/meritz.jpg" class="figure_item"  alt="메리츠화재">
-            </figure>
-        </li>
-
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/lifeplanet.jpg" class="figure_item"  alt="교보라이프플래닛">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/samsung.jpg" class="figure_item" alt="삼성화재">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/nexon.jpg" class="figure_item"  alt="넥슨">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/nc.jpg" class="figure_item" alt="엔씨소프트">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/hodoo.jpg" class="figure_item" alt="호두잉글리시">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/simmons.jpg" class="figure_item"  alt="시몬스">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/bullsone.jpg" class="figure_item" alt="불스원">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/shany.jpg" class="figure_item" alt="샤니">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/goodpeople.jpg" class="figure_item"  alt="좋은사람들">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/amore.jpg" class="figure_item" alt="아모레퍼시픽">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/realbarrier.jpg" class="figure_item"  alt="리얼베리어">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/six.jpg" class="figure_item"  alt="식스코인">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/mindbridge.jpg" class="figure_item"   alt="마인드브릿지">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/carby.jpg" class="figure_item" alt="카비">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/madforgarlic.jpg" class="figure_item"  alt="메드포갈릭">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/lg.jpg" class="figure_item" alt="lg전자">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/toxnfill.jpg" class="figure_item" alt="톡스앤필">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/ramada.jpg" class="figure_item" alt="라마다호텔">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/funbeerking.jpg" class="figure_item"  alt="펀비어킹">
-            </figure>
-        </li>
-        <li class="client_items">
-            
-            <figure>
-                <img src="@/assets/images/soomlab.jpg" class="figure_item" alt="숨랩">
-            </figure>
-        </li>
-
     </ul>
 </template>
       
 <script>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick  } from 'vue';
 import { gsap, Expo } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
@@ -178,9 +20,121 @@ export default {
 
 
     setup() {
-     
+        const listItem = ref([
+            {
+                "src": "f&f.jpg",
+                "alt": "에프엔에프"
+            },
+            {
+                "src": "casamia.jpg",
+                "alt": "신세계까사"
+            },
+            {
+                "src": "bing.jpg",
+                "alt": "빙그레"
+            },
+            {
+                "src": "coca.jpg",
+                "alt": "코라콜라"
+            },
+            {
+                "src": "magnum.jpg",
+                "alt": "매그넘"
+            },
+            {
+                "src": "p&g.jpg",
+                "alt": "p&g"
+            },
+            {
+                "src": "meritz.jpg",
+                "alt": "메리츠화재"
+            },
+            {
+                "src": "lifeplanet.jpg",
+                "alt": "교보라이프플래닛"
+            },
+            {
+                "src": "samsung.jpg",
+                "alt": "삼성화재"
+            },
+            {
+                "src": "nexon.jpg",
+                "alt": "넥슨"
+            },
+            {
+                "src": "nc.jpg",
+                "alt": "엔씨소프트"
+            },
+            {
+                "src": "hodoo.jpg",
+                "alt": "호두잉글리시"
+            },
+            {
+                "src": "simmons.jpg",
+                "alt": "시몬스"
+            },
+            {
+                "src": "bullsone.jpg",
+                "alt": "불스원"
+            },
+            {
+                "src": "shany.jpg",
+                "alt": "샤니"
+            },
+            {
+                "src": "goodpeople.jpg",
+                "alt": "좋은사람들"
+            },
+            {
+                "src": "amore.jpg",
+                "alt": "아모레퍼시픽"
+            },
+            {
+                "src": "realbarrier.jpg",
+                "alt": "리얼베리어"
+            },
+            {
+                "src": "six.jpg",
+                "alt": "식스코인"
+            },
+            {
+                "src": "mindbridge.jpg",
+                "alt": "마인드브릿지"
+            },
+            {
+                "src": "carby.jpg",
+                "alt": "카비"
+            },
+            {
+                "src": "madforgarlic.jpg",
+                "alt": "메드포갈릭"
+            },
+            {
+                "src": "lg.jpg",
+                "alt": "lg전자"
+            },
+            {
+                "src": "toxnfill.jpg",
+                "alt": "톡스앤필"
+            },
+            {
+                "src": "ramada.jpg",
+                "alt": "라마다호텔"
+            },
+            {
+                "src": "funbeerking.jpg",
+                "alt": "펀비어킹"
+            },
+            {
+                "src": "soomlab.jpg",
+                "alt": "숨랩"
+            }
+        ])
+        const processedList = ref([]);
+        
         const cardListShow = () => {
             const clientItems = gsap.utils.toArray(".figure_item");
+            console.log(clientItems, clientItems.length );
             clientItems.forEach((item, index) => {
                 let tl = gsap.timeline({
                     scrollTrigger: {
@@ -195,7 +149,11 @@ export default {
             })
         }
         onMounted(() => {
-            cardListShow();
+            processedList.value = listItem.value.map(item => ({
+                ...item,
+                imageSrc: require(`@/assets/images/${item.src}`)
+            }));
+            nextTick(cardListShow);
         })
 
         onUnmounted(() => {
@@ -203,7 +161,7 @@ export default {
         })
 
         return {
-            // cardListShow
+            processedList
         };
     }
 }

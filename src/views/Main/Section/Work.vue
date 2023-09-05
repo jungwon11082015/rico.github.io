@@ -14,7 +14,7 @@
 </template>
        
 <script>
-import { ref, inject, onMounted, watch   } from 'vue';
+import { ref, inject, onMounted, watch } from 'vue';
 import CardList from '@/components/Layouts/List/CardList.vue'
 import AllWork from '@/components/Layouts/buttons/AllWork.vue'
 import Skeletor from "@/components/Layouts/common/Skeleton.vue";
