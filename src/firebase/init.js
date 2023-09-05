@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 
-firebase info
+// firebase info
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_API_KEY,
   authDomain:  process.env.VUE_APP_AUTH_DOMAIN,
