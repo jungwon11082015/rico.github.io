@@ -10,7 +10,6 @@ export const useWorkStore = defineStore('workStore', {
   }),
   getters: {
     startIndex: (state) => (state.currentPage - 1),
-    // endIndex: (state, getters) => state.startIndex,
     prevInfo: ( state ) => ( state.list[state.currentPage-2]),
     nextInfo: ( state ) => ( state.list[state.currentPage]),
     totalItem : ( state ) => ( state.totalPage )

@@ -78,11 +78,7 @@ router.beforeEach((to, from, next) => {
   const contents = gsap.utils.toArray("header, nav, main, #work, footer");
   
   if (!header.classList.contains('open')) {
-    // Show wave and hide contents before navigating
     waveShow(wave, tl, contents, next);
-    // setTimeout(() => {
-    //   next();
-    // }, 1000);
   }
 });
 
