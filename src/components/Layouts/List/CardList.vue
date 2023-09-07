@@ -3,7 +3,7 @@
         <li class="card__item" v-for="(item, index) in  displayedItems" :key="item.id">
             <router-link :to="{ name: 'WorkView', params: { id: item.id }}">
                 <div class="video__dimd"></div>
-                <video loop playsinline muted autoplay>
+                <video loop playsinline muted autoplay :poster="item.dataPoster">
                     <source :src="item.dataSrc" type="video/mp4">
                 </video>
                 <ul class="card--tag__list">
